@@ -1,5 +1,7 @@
 package com.bss.uis.api.gateway.controller;
 
+import java.security.Principal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,17 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bss.uis.api.gateway.util.CommonResponse;
 
-import java.io.Serializable;
-import java.security.Principal;
-
-/**
- * @Author : Amran Hosssain on 6/27/2020
- */
 @RestController
 @RequestMapping("/api")
-public class LogOutController implements Serializable {
+public class LogOutController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogOutController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogOutController.class);
 
     @GetMapping(path = "/logout", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CommonResponse> userLogout(@RequestParam String userName, Principal principal) {

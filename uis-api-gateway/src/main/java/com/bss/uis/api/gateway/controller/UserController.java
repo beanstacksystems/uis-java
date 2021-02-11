@@ -1,8 +1,6 @@
 package com.bss.uis.api.gateway.controller;
 
-import com.bss.uis.api.gateway.dto.UserSignupDTO;
-import com.bss.uis.api.gateway.service.UserService;
-import com.bss.uis.api.gateway.util.CommonResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.io.Serializable;
+import com.bss.uis.api.gateway.dto.UserSignupDTO;
+import com.bss.uis.api.gateway.service.UserService;
+import com.bss.uis.api.gateway.util.CommonResponse;
 
-/**
- * @Author : Amran Hosssain on 6/24/2020
- */
 @RestController
-public class UserController implements Serializable {
+public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 

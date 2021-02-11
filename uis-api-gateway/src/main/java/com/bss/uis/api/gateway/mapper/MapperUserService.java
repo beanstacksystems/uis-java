@@ -20,7 +20,10 @@ import java.time.LocalDateTime;
 @Component
 public class MapperUserService implements Serializable {
 
-    @Autowired private PasswordEncoder passwordEncoder;
+	private static final long serialVersionUID = 1L;
+	
+	@Autowired 
+	private transient PasswordEncoder passwordEncoder;
 
     public UserEntity mapUserFromDTO(UserSignupDTO userSignupDTO) {
         UserEntity userEntity = new UserEntity();

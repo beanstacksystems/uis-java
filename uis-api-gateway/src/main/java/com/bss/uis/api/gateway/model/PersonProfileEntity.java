@@ -23,7 +23,9 @@ import java.util.Set;
 @Table(name = "tbl_sec_person_profile", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class PersonProfileEntity implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "person_id", unique = true)
     private Long personId;

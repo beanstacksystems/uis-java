@@ -20,7 +20,9 @@ import java.time.LocalDateTime;
 @Table(name = "tbl_sec_user")
 public class UserEntity implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", unique = true)
     private Long userId;

@@ -8,16 +8,14 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @Author : Amran Hosssain on 6/26/2020
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class PersonProfileDTO implements Serializable {
 
-    private Long personId;
+	private static final long serialVersionUID = 1L;
+	private Long personId;
     private String firstName;
     private String middleName;
     private String lastName;

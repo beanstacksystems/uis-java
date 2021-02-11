@@ -3,9 +3,6 @@ package com.bss.uis.api.gateway.dto;
 import lombok.*;
 import java.io.Serializable;
 
-/**
- * @Author : Amran Hosssain on 6/26/2020
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +10,8 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class AddressDTO implements Serializable {
 
-    private String addressType;
+	private static final long serialVersionUID = 1L;
+	private String addressType;
     private String addressLineOne;
     private String addressLineTwo;
     private String city;

@@ -1,5 +1,7 @@
 package com.bss.uis.api.gateway.security;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +17,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import com.bss.uis.api.gateway.service.UserServiceImpl;
-
-import javax.sql.DataSource;
 
 /**
  * @Author : Amran Hosssain on 6/23/2020

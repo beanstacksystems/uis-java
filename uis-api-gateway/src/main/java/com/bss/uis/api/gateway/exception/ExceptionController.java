@@ -1,7 +1,7 @@
 package com.bss.uis.api.gateway.exception;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
@@ -10,16 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bss.uis.api.gateway.util.CommonResponse;
 
-import javax.servlet.http.HttpServletRequest;
-
-/**
- * @Author : Amran Hosssain on 6/26/2020
- */
 @ControllerAdvice
 public class ExceptionController {
 
-    @Autowired
-    private ErrorAttributes errorAttributes;
+//    @Autowired
+//    private ErrorAttributes errorAttributes;
 
     @ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
     private ResponseEntity<CommonResponse> exception(HttpServletRequest request) {

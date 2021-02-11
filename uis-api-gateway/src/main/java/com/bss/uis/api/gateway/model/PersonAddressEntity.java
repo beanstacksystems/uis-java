@@ -19,7 +19,9 @@ import java.io.Serializable;
 @Table(name = "tbl_sec_person_address")
 public class PersonAddressEntity implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "address_id",unique = true)
     private Long addressId;

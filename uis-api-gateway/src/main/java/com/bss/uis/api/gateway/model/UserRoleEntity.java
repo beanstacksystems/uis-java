@@ -17,7 +17,9 @@ import java.time.LocalDateTime;
 @Table(name = "tbl_sec_user_role",uniqueConstraints = {@UniqueConstraint(columnNames={"role_name"})})
 public class UserRoleEntity implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="role_id",nullable = false)
     private Long roleId;

@@ -12,16 +12,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Author : Amran Hosssain on 6/24/2020
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class UserSignupDTO implements Serializable {
 
-    private Long personId;
+	private static final long serialVersionUID = 1L;
+	
+	private Long personId;
     @NotEmpty(message = "First name can't be null or empty")
     private String firstName;
     private String middleName;
