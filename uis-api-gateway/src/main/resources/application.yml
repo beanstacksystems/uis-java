@@ -7,12 +7,12 @@
 #            timeoutInMilliseconds: 5000
 hystrix:
   command:
-    clinic-management-service:
+    uis-shelter-management-service:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
-    patient-management-service:
+    uis-patient-management-service:
       execution:
         isolation:
           thread:
