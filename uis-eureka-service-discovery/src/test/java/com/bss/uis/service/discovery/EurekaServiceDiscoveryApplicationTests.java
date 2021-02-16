@@ -1,10 +1,10 @@
-package com.amran.central.config;
+package com.bss.uis.service.discovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EhealthCentralConfigurationApplicationTests {
+class EurekaServiceDiscoveryApplicationTests {
 
     @Test
     void contextLoads() {
