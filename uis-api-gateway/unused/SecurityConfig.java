@@ -39,8 +39,8 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private ClientDetailsService clientDetailsService;
+//    @Autowired
+//    private ClientDetailsService clientDetailsService;
 
     @Autowired
     private DataSource dataSource;
@@ -48,8 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    @Autowired MyBasicAuthenticationEntryPoint myBasicAuthenticationEntryPoint;
-
+    @Autowired 
+    MyBasicAuthenticationEntryPoint myBasicAuthenticationEntryPoint;
+    
     @Override
     @Order(Ordered.HIGHEST_PRECEDENCE)
     protected void configure(HttpSecurity http) throws Exception {
@@ -57,12 +58,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .cors()
+                .and()
                 .authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/routes/**").permitAll()
                 .antMatchers("/oauth/token").permitAll()
                 //.antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
+//                .and()
+//                .oauth2Login()
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(myBasicAuthenticationEntryPoint);
@@ -119,8 +125,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        return encoder;
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Bean

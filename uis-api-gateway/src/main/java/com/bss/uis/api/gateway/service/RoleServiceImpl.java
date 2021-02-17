@@ -1,15 +1,14 @@
 package com.bss.uis.api.gateway.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bss.uis.api.gateway.model.UserRoleEntity;
 import com.bss.uis.api.gateway.repository.RoleRepository;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @Author : Amran Hosssain on 6/23/2020
@@ -18,14 +17,13 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private RoleRepository roleRepository;
 
     @Override
     public List<UserRoleEntity> getAllRoles() {
-        LOGGER.info("getAllRoles method call...");
+        log.info("getAllRoles method call...");
         return roleRepository.findAll();
     }
 }

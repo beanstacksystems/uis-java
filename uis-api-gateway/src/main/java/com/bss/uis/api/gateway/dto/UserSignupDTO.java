@@ -21,30 +21,44 @@ public class UserSignupDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long personId;
-    @NotEmpty(message = "First name can't be null or empty")
+    
+	@NotEmpty(message = "First name can't be null or empty")
     private String firstName;
-    private String middleName;
-    @NotEmpty(message = "Last name can't be null or empty")
+    
+	private String middleName;
+    
+	@NotEmpty(message = "Last name can't be null or empty")
     private String lastName;
-    @NotEmpty(message = "User name can't be null or empty")
+    
+	@NotEmpty(message = "User name can't be null or empty")
     private String userName;
-    @NotEmpty(message = "Must be provide password")
+    
+	@NotEmpty(message = "Must be provide password")
     @Size(min = 8, max = 32, message = "Password must be between 2 and 32 characters long")
     private String password;
-    @NotNull(message = "Must be provide date of birth")
+    
+	@NotNull(message = "Must be provide date of birth")
     private Date dateOfBirth;
-    @NotEmpty(message = "Must be provide gender")
+    
+	@NotEmpty(message = "Must be provide gender")
     private String gender;
-    @NotEmpty(message = "Must be provide email")
+    
+	@NotEmpty(message = "Must be provide email")
     private String email;
-    @NotEmpty(message = "Must be provide cellphone")
+    
+	@NotEmpty(message = "Must be provide cellphone")
     private String cellPhone;
-    private String homePhone;
-    private String workPhone;
-    @NotEmpty(message = "Must be provide occupation")
+    
+	private String homePhone;
+    
+	private String workPhone;
+    
+	@NotEmpty(message = "Must be provide occupation")
     private String occupation;
-    @NotEmpty(message = "Must be provide employer")
+    
+	@NotEmpty(message = "Must be provide employer")
     private String employer;
-    private List<AddressDTO> addressDTOList;
+    
+	private List<AddressDTO> addressDTOList;
 
 }

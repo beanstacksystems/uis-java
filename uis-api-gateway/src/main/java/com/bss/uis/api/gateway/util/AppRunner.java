@@ -1,10 +1,7 @@
 package com.bss.uis.api.gateway.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import com.bss.uis.api.gateway.repository.RoleRepository;
 
 /**
  * @Author : Amran Hosssain on 6/26/2020
@@ -12,7 +9,7 @@ import com.bss.uis.api.gateway.repository.RoleRepository;
 @Component
 public class AppRunner implements CommandLineRunner {
 
-    @Autowired private RoleRepository roleRepository;
+//    @Autowired private RoleRepository roleRepository;
 
     @Override
     public void run(String... args) throws Exception {

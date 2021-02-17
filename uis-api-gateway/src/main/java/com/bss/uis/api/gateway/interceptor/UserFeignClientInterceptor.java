@@ -1,4 +1,4 @@
-package com.bss.uis.api.gateway.security;
+package com.bss.uis.api.gateway.interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
