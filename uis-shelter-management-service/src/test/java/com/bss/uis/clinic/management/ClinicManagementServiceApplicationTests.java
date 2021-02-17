@@ -1,10 +1,10 @@
-package com.amran.api.gateway;
+package com.bss.uis.clinic.management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EhealthApiGatewayApplicationTests {
+class ClinicManagementServiceApplicationTests {
 
     @Test
     void contextLoads() {

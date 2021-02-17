@@ -1,10 +1,10 @@
-package com.amran.clinic.management;
+package com.bss.uis.patient.management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClinicManagementServiceApplicationTests {
+class PatientManagementServiceApplicationTests {
 
     @Test
     void contextLoads() {
