@@ -45,7 +45,7 @@ public class AuthService {
 
         final Optional<User> userOptional = userRepository.findByEmail(facebookUserModel.getEmail());
 
-        if (userOptional.isEmpty()) {        //we have no user with given email so register them
+        if (userOptional.isPresent()) {        //we have no user with given email so register them
             final User user = new User(facebookUserModel.getEmail(), new RandomString(10).nextString(), LoginMethodEnum.FACEBOOK, "ROLE_USER", facebookUserModel.getEmail());
             userRepository.save(user);
             final UserPrincipal userPrincipal = new UserPrincipal(user);
