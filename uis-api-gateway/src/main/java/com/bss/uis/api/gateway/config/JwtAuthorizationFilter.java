@@ -36,6 +36,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String header = request.getHeader(Properties.HEADER_STRING);
         if (header == null || !header.startsWith(Properties.TOKEN_PREFIX)) {
+        	System.out.println("#############################################");
+        	System.out.println("Authorisation Header: "+(header==null?header:header.startsWith(Properties.TOKEN_PREFIX)));
+        	System.out.println("#############################################");
             chain.doFilter(request, response);
             return;
         }
