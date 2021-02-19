@@ -8,11 +8,11 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bss.uis.service.discovery</groupId>
+    <groupId>com.bss.uis</groupId>
     <artifactId>uis-eureka-service-discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>uis-eureka-service-discovery</name>
-    <description>uis eureka-service-discovery project for Spring Boot</description>
+    <name>UIS EUREKA SERVICE DISCOVERY</name>
+    <description>UIS EUREKA SERVICE DISCOVERY</description>
 
     <properties>
         <java.version>1.8</java.version>
