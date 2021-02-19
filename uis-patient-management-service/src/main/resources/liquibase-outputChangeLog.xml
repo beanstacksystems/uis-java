@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd"/>
+    <changeSet author="Amit (generated)" id="1613745760597-1">
+        <createSequence sequenceName="patient_ovd_ovd_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-2">
+        <createSequence sequenceName="patient_patient_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-3">
+        <createSequence sequenceName="person_address_address_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-4">
+        <createSequence sequenceName="person_contact_contact_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-5">
+        <createSequence sequenceName="person_person_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-6">
+        <createSequence sequenceName="person_social_profile_social_profile_id_seq"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-7">
+        <createTable tableName="patient">
+            <column autoIncrement="true" name="patient_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_patient"/>
+            </column>
+            <column name="patient_person_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attendant_person_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="blood_group_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="medical_condition_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="medical_condition_summary" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-8">
+        <createTable tableName="patient_ovd">
+            <column autoIncrement="true" name="ovd_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_patient_ovd"/>
+            </column>
+            <column name="patient_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ovd_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ovd_value" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ovd_image" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-9">
+        <createTable tableName="person">
+            <column autoIncrement="true" name="person_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_person"/>
+            </column>
+            <column name="first_name" type="VARCHAR(100)"/>
+            <column name="middle_name" type="VARCHAR(100)"/>
+            <column name="last_name" type="VARCHAR(100)"/>
+            <column name="gender_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dob" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-10">
+        <createTable tableName="person_address">
+            <column autoIncrement="true" name="address_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_person_address"/>
+            </column>
+            <column name="person_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_line_1" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_line_2" type="VARCHAR(100)"/>
+            <column name="city" type="VARCHAR(50)"/>
+            <column name="district_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-11">
+        <createTable tableName="person_contact">
+            <column autoIncrement="true" name="contact_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_person_contact"/>
+            </column>
+            <column name="person_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_value" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-12">
+        <createTable tableName="person_social_profile">
+            <column autoIncrement="true" name="social_profile_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="pk_person_social_profile"/>
+            </column>
+            <column name="person_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="social_profile_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="social_profile_url" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-13">
+        <addForeignKeyConstraint baseColumnNames="attendant_person_id" baseTableName="patient" constraintName="fk_attendant_person_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="person_id" referencedTableName="person"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-14">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_contact" constraintName="fk_contact_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="person_id" referencedTableName="person"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-15">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_social_profile" constraintName="fk_patient_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="person_id" referencedTableName="person"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-16">
+        <addForeignKeyConstraint baseColumnNames="patient_person_id" baseTableName="patient" constraintName="fk_patient_person_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="person_id" referencedTableName="person"/>
+    </changeSet>
+    <changeSet author="Amit (generated)" id="1613745760597-17">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_address" constraintName="fk_person_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="person_id" referencedTableName="person"/>
+    </changeSet>
+</databaseChangeLog>

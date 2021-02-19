@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="v1.0.0" author="beanstack"
+		logicalFilePath="db/log/changelog/changeSet-v1.0.0.xml" labels="initial" >
+
+		<!-- Person Table -->
+		<createTable tableName="person">
+			<column autoIncrement="true" name="person_id" type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="first_name" type="VARCHAR(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="middle_name" type="VARCHAR(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="last_name" type="VARCHAR(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="gender_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="dob" type="date">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<!-- Person Contact Table -->
+		<createTable tableName="person_contact">
+			<column autoIncrement="true" name="contact_id" type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="person_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_contact_id" references="person(person_id)" />
+			</column>
+			<column name="contact_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="contact_value" type="integer">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<!-- Person Social Profile Table -->
+		<createTable tableName="person_social_profile">
+			<column autoIncrement="true" name="social_profile_id"
+				type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="person_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_patient_id" references="person(person_id)" />
+			</column>
+			<column name="social_profile_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="social_profile_url" type="VARCHAR(512)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<!-- Person Address Table -->
+		<createTable tableName="person_address">
+			<column autoIncrement="true" name="address_id" type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="person_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_person_id" references="person(person_id)" />
+			</column>
+			<column name="address_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="address_line_1" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="address_line_2" type="VARCHAR(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="city" type="VARCHAR(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="district_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="state_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="country_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="pin" type="integer">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<!-- Patient Table -->
+		<createTable tableName="patient">
+			<column autoIncrement="true" name="patient_id" type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="patient_person_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_patient_person_id"
+					references="person(person_id)" />
+			</column>
+			<column name="attendant_person_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_attendant_person_id"
+					references="person(person_id)" />
+			</column>
+			<column name="blood_group_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="medical_condition_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="medical_condition_summary" type="text">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<!-- Patient OVD Table -->
+		<createTable tableName="patient_ovd">
+			<column autoIncrement="true" name="ovd_id" type="integer">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="patient_id" type="integer">
+				<constraints nullable="false"
+					foreignKeyName="fk_patient_id" references="patient(patient_id)" />
+			</column>
+			<column name="ovd_type" type="integer">
+				<constraints nullable="false" />
+			</column>
+			<column name="ovd_value" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="ovd_image" type="BLOB">
+				<constraints nullable="true" />
+			</column>
+		</createTable>
+
+		<rollback>
+			<dropTable tableName="patient_ovd"/>
+			<dropTable tableName="patient"/>
+			<dropTable tableName="person_address"/>
+			<dropTable tableName="person_social_profile"/>
+			<dropTable tableName="person_contact"/>
+			<dropTable tableName="person"/>
+		</rollback>
+
+	</changeSet>
+
+</databaseChangeLog>

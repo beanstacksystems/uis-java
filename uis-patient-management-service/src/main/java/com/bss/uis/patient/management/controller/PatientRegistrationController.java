@@ -8,10 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.Serializable;
-
 @RestController
-public class PatientRegistrationController implements Serializable {
+public class PatientRegistrationController {
 
     @Value("${server.url:Unable to connect to config server}")
     private String url;
