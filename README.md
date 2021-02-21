@@ -9,6 +9,9 @@ Try https://localhost:8080
 - [Facebook Developers' Console](https://developers.facebook.com/apps/1013610292464704/dashboard/?business_id=194072671856628)
 
 
+## [How to enable HTTPS in a Spring Boot Java application](https://www.thomasvitale.com/https-spring-boot-ssl-certificate)
+
+
 ## Issues
 
 ### [*Facebook Login Issue*](https://github.com/beanstacksystems/uis-java/issues/1)
