@@ -1,7 +1,7 @@
 # UIS - API
 ***Status*** - Social Login configured in **Gateway** but issue exists.
 
-Try https://localhost:8080
+Try http://localhost:8080
 
 ## [Spring Security 5 OAuth2 Login](https://www.baeldung.com/spring-security-5-oauth2-login)
 
