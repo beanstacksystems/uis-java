@@ -109,18 +109,18 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 
-		<resources>
+		<!-- <resources>
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>*.properties</include>
+					<include>**/*</include>
 				</includes> 
 				<excludes>
 					<exclude>liquibase.properties</exclude>
 				</excludes>
 			</resource>
-		</resources>
+		</resources> -->
 
 		<!--
 		<filters>
