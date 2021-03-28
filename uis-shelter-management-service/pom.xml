@@ -101,7 +101,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <resources>
+        <!-- <resources>
             <resource>
                 <filtering>true</filtering>
                 <directory>src/main/resources</directory>
@@ -109,6 +109,6 @@
                     <include>*.properties</include>
                 </includes>
             </resource>
-        </resources>
+        </resources> -->
     </build>
 </project>
