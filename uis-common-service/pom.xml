@@ -6,7 +6,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.3</version>
+		<version>2.3.1.RELEASE</version>
+		<!-- <version>2.4.3</version> -->
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bss.uis</groupId>
@@ -17,7 +18,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>2020.0.1</spring-cloud.version>
+		<spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+		<!-- <spring-cloud.version>2020.0.1</spring-cloud.version> -->
 	</properties>
 
 	<dependencies>
@@ -61,12 +63,13 @@
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
+		</dependency> -->
+		
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -89,6 +92,7 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -103,7 +107,7 @@
 
 	<build>
 	
-		<resources>
+		<!-- <resources>
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
@@ -114,7 +118,7 @@
 					<exclude>liquibase.properties</exclude>
 				</excludes>
 			</resource>
-		</resources>
+		</resources> -->
 		
 		<plugins>
 			<plugin>
@@ -133,6 +137,7 @@
 			<plugin>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.4.1</version>
 				<configuration>
 					<propertyFile>src/main/resources/liquibase.properties</propertyFile>
 				</configuration>
