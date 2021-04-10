@@ -42,20 +42,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         	.csrf()
-        	.disable()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)     //no cookies
+        	.disable().sessionManagement()
+        	.sessionCreationPolicy(SessionCreationPolicy.STATELESS)     //no cookies
+        	
+        	.and().cors()
+        	
             .and()
-            .cors()
+            	.authorizeRequests()
+	            .antMatchers("/actuator/**").permitAll()
+	            .antMatchers("/api/auth/**").permitAll()
+	            .antMatchers("/api/profile/**").hasRole("USER")
+	            .anyRequest().authenticated()
+            
+	        .and()
+            	.oauth2Login()
+            
             .and()
-            .authorizeRequests()
-            .antMatchers("/actuator/**").permitAll()
-            .antMatchers("/api/auth/**").permitAll()
-            .antMatchers("/api/profile/**").hasRole("USER")
-            .anyRequest().authenticated()
-            .and()
-            .oauth2Login()
-            .and()
-            .addFilter(jwtAuthorizationFilter());
+		        .requiresChannel() // SSL
+	 	        .anyRequest() // SSL
+		        .requiresSecure() // SSL
+            
+		    .and()
+            	.addFilter(jwtAuthorizationFilter());
     }
 }
