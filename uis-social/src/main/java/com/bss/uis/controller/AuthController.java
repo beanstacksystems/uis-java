@@ -99,9 +99,9 @@ public class AuthController {
 		ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId(registrationId);
 
 		if (registrationId.equalsIgnoreCase(AuthProvider.google.toString())) {
-			oAuth2AuthenticationToken = authenticateGoogleUser(idToken, authCode, clientRegistration);
+			oAuth2AuthenticationToken = getAuthTokenForGoogleUser(idToken, authCode, clientRegistration);
 		} else if (registrationId.equalsIgnoreCase(AuthProvider.facebook.toString())) {
-			oAuth2AuthenticationToken = authenticateFacebookUser(idToken, authCode, clientRegistration);
+			oAuth2AuthenticationToken = getAuthTokenForFacebookUser(idToken, authCode, clientRegistration);
 		} else if (registrationId.equalsIgnoreCase(AuthProvider.github.toString())) {
 //        	return new GithubOAuth2UserInfo(attributes);
 		}
@@ -109,16 +109,19 @@ public class AuthController {
 		if (null == oAuth2AuthenticationToken) {
 			ResponseEntity.badRequest().build();
 		}
+		
+		Authentication authentication = authenticationManager.authenticate(oAuth2AuthenticationToken);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		return ResponseEntity.ok(new AuthResponse(tokenProvider.createToken(oAuth2AuthenticationToken)));
 	}
 
-	private OAuth2AuthenticationToken authenticateFacebookUser(String idToken, String authCode, ClientRegistration clientRegistration) {
+	private OAuth2AuthenticationToken getAuthTokenForFacebookUser(String idToken, String authCode, ClientRegistration clientRegistration) {
 		throw new UnsupportedOperationException("Facebook authentication is not yet supported");
 	}
 
 	@SuppressWarnings("unchecked")
-	private OAuth2AuthenticationToken authenticateGoogleUser(String idToken, String authCode,
+	private OAuth2AuthenticationToken getAuthTokenForGoogleUser(String idToken, String authCode,
 			ClientRegistration clientRegistration)
 			throws IOException, GeneralSecurityException {
 		

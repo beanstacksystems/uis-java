@@ -1,3 +1,18 @@
+## SSL Configuration
+server:
+    port: 8443
+    ssl:
+        key-store: classpath:keystore.p12
+        key-store-password: beanstack
+        key-store-type: pkcs12
+        key-alias: uis
+#    error:
+#        whitelabel:
+#            enabled: false
+    
+
+#server.ssl.key-password=beanstack
+
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/spring_social?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false

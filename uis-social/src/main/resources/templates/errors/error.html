@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en_us" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Error</title>
+	</head>
+	<body>
+		<h1>
+			Error - <span th:text="${status}"></span>
+		</h1>
+	
+		<p th:if="${url}">
+			<b>Page:</b> <span th:text="${url}">Page URL</span>
+		</p>
+	
+		<p th:if="${path}">
+			<b>Path:</b> <span th:text="${path}">Path</span>
+		</p>
+	
+		<p th:if="${timestamp}">
+			<b>Occurred:</b> <span th:text="${timestamp}">Timestamp</span>
+		</p>
+	
+		<p th:if="${status}">
+			<b>Response Status:</b> <span th:text="${status}">status-code</span> <span
+				th:if="${error}" th:text="'('+${error}+')'">error ...</span>
+		</p>
+	
+		<p th:if="${message != 'No message available'}">
+			<b>Response Message:</b> <span th:text="${message}">status
+				message</span>
+		</p>
+	
+		<p>Application has encountered an error. Please contact support</p>
+	
+		<p>You may right click to view page source for more information.</p>
+	
+		<div th:utext="'&lt;!--'" th:remove="tag"></div>
+		<div th:utext="'Trace Details:'" th:remove="tag">Trace Details:</div>
+		<div th:if="${url != null}" th:utext="'Failed URL: ' +  ${url}"
+			th:remove="tag"></div>
+		<div th:if="${exception != null}"
+			th:utext="'Exception: ' + ${exception.message}" th:remove="tag">
+		</div>
+		<ul th:remove="tag">
+			<li th:each="stackTraceElement : ${exception?.stackTrace}"
+				th:remove="tag"><span th:utext="${stackTraceElement}"
+				th:remove="tag"></span></li>
+		</ul>
+		<div th:utext="'--&gt;'" th:remove="tag"></div>
+	
+	</body>
+</html>
