@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
 //    private HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
-
+	
 	@Bean
 	public TokenAuthenticationFilter tokenAuthenticationFilter() {
 		return new TokenAuthenticationFilter();
@@ -128,8 +128,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			    .and()
 			    	.requiresChannel() // SSL
 			        .anyRequest() // SSL
-			        .requiresSecure(); // SSL
-
+			        .requiresSecure() // SSL
+        		;
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }

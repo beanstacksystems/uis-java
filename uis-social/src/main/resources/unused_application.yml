@@ -1,28 +1,3 @@
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 5000
-hystrix:
-  command:
-    uis-shelter-management-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000
-    uis-patient-management-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000
-    uis-common-service:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000
-
 ## SSL Configuration
 
 server:
@@ -36,7 +11,7 @@ server:
 #    error:
 #        whitelabel:
 #            enabled: false
-            
+    
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/spring_social?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
@@ -53,7 +28,6 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQL10Dialect
-                
     security:
       oauth2:
         client:
