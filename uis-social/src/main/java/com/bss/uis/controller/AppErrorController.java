@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.boot.web.error.ErrorAttributeOptions;
+import org.springframework.boot.web.error.ErrorAttributeOptions.Include;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 //import org.springframework.boot.autoconfigure.web.ErrorAttributes;
@@ -83,7 +85,7 @@ public class AppErrorController implements ErrorController{
 
 	private Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
 		WebRequest webRequest = new ServletWebRequest(request);
-		return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace);
+		return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace?ErrorAttributeOptions.of(Include.STACK_TRACE):null);
 	}
 
     private HttpStatus getStatus(HttpServletRequest request) {
