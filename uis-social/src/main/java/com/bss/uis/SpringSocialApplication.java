@@ -19,8 +19,8 @@ import com.bss.uis.filter.RouteFilter;
 @EnableDiscoveryClient
 @EnableZuulProxy
 @EnableCircuitBreaker
-@SpringBootApplication
 @EnableConfigurationProperties(AppProperties.class)
+@SpringBootApplication
 public class SpringSocialApplication {
 
 	public static void main(String[] args) {
